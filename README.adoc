@@ -32,7 +32,7 @@ $ gem install dotenv_secrets
 It's really simple:
 
 ```ruby
-secrets = DotenvSecrets.new(path: "/tmp/secrets.env") # many cloud providers /tmp dir is a ramdisk,
+secrets = DotenvSecrets.new(path: "/tmp/secrets.env") # many cloud providers' /tmp dir is a ramdisk,
                                                       # so your secrets never get to written to
                                                       # disk if they're provisioned in /tmp/
 
