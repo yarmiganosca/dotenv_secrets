@@ -36,11 +36,9 @@ secrets = DotenvSecrets.new(path: "/tmp/secrets.env") # many cloud providers /tm
                                                       # so your secrets never get to written to
                                                       # disk if they're provisioned in /tmp/
 
-secrets["SOME_SERVICE_API_KEY"] # => whatever value was stored directly
-                                #    after SOME_SERVICE_API_KEY=
+secrets["SOME_SERVICE_API_KEY"] # => whatever value was stored directly after SOME_SERVICE_API_KEY=
 
-secrets["NOT_IN_THE_FILE"] # => KeyError gets raised. KeyError seemed like
-                           #    the most applicable builtin error class.
+secrets["NOT_IN_THE_FILE"] # => raises an EOFError
 ```
 
 That's it!

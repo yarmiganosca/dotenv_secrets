@@ -16,7 +16,7 @@ class DotenvSecrets
     if key_line
       key_line[(key.size + 1)..-1].chomp
     else
-      raise KeyError, "key #{key} not found in #{path}"
+      raise EOFError, "#{key}= not found in #{path}"
     end
   end
 

@@ -15,8 +15,8 @@ RSpec.describe DotenvSecrets do
     end
 
     context "looking for a key that isn't in the file" do
-      it "raises a KeyError" do
-        expect { secrets["B_C"] }.to raise_error(KeyError, /B_C/)
+      it "raises a EOFError" do
+        expect { secrets["B_C"] }.to raise_error(EOFError, /B_C.*#{path}/)
       end
     end
 
