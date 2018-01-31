@@ -1,0 +1,56 @@
+= DotenvSecrets
+
+`dotenv_secrets` is a simple utility that allows you to read from dotenv-formatted secrets files without populating env vars with those secrets. This is good because 3rd party integrations, loggers--all kinds of stuff frankly--can ship your entire `ENV` constant somewhere, and if you had secrets in environment variables, well they're not secret anymore.
+
+== Goals
+
+* Make it easy (if not as performant) to read from dotenv files without populating `ENV`
+* Never keep the contents of the dotenv-formatted file in memory past one GC run
+
+== Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'dotenv_secrets'
+```
+
+And then execute:
+
+```shell
+$ bundle
+```
+
+Or install it yourself as:
+
+```shell
+$ gem install dotenv_secrets
+```
+
+== Usage
+
+It's really simple:
+
+```ruby
+secrets = DotenvSecrets.new(path: "/tmp/secrets.env") # many cloud providers /tmp dir is a ramdisk, so your secrets never get to written to disk if they're provisioned in /tmp
+
+secrets["SOME_SERVICE_API_KEY"] # => whatever value was stored directly after SOME_SERVICE_API_KEY=
+
+secrets["NOT_IN_THE_FILE"] # => KeyError gets raised. KeyError seemed like the most applicable base builtin error class.
+```
+
+That's it!
+
+== Development
+
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to link:https://rubygems.org[rubygems.org].
+
+== Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/yarmiganosca/dotenv_secrets. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the link:http://contributor-covenant.org[Contributor Convenant] code of conduct.
+
+== Code of Conduct
+
+Everyone interacting in the PushGatewayMetrics project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the link:https://github.com/yarmiganosca/dotenv_secrets/blob/master/CODE_OF_CONDUCT.md[code of conduct].
