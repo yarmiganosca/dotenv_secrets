@@ -1,5 +1,7 @@
 = DotenvSecrets
 
+image:https://travis-ci.org/yarmiganosca/dotenv_secrets.svg?branch=master["Build Status", link="https://travis-ci.org/yarmiganosca/dotenv_secrets"]
+
 `dotenv_secrets` is a simple utility that allows you to read from dotenv-formatted secrets files without populating env vars with those secrets. This is good because 3rd party integrations, loggers--all kinds of stuff frankly--can ship your entire `ENV` constant somewhere, and if you had secrets in environment variables, well they're not secret anymore.
 
 == Goals
